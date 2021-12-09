@@ -1,9 +1,31 @@
 import Head from 'next/head'
+import React, {useState} from 'react'
 
 import { FiChevronLeft } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
 
 export default function Home({ movie }) {
+  const [scrollX, setScrollX] = useState(0)
+
+
+  function LeftArrow() {
+    let x = scrollX + 500
+    if (x > 0) {
+      x = 0
+    }
+    setScrollX(x)
+  }
+
+  function RightArrow() {
+    let x = scrollX - 500
+    let list = 19 * 220
+    if ((window.innerWidth - list) > x) {
+      x = (window.innerWidth - list) - 230
+    }
+    setScrollX(x)
+    console.log(list)
+  }
+
   return (
     <div >
       <Head>
@@ -15,15 +37,15 @@ export default function Home({ movie }) {
       <div className='home_contente'>
         <div className="container-image"></div>
         <div className="wrapper">
-          <button className='left_button'><FiChevronLeft /></button>
-          <button className='right_button'><FiChevronRight /></button>
-          <div className="slide">
+          <button onClick={LeftArrow}  className='left_button'><FiChevronLeft /></button>
+          <button onClick={RightArrow} className='right_button'><FiChevronRight /></button>
+          <div style={{ marginLeft: scrollX }} className="slide">
 
             {
               movie.map((item, index) => {
                 return (
                   <div key={index} className="card">
-                    <img src={item.image_link} />
+                    <img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} />
                   </div>
                 )
               })
@@ -39,13 +61,17 @@ export default function Home({ movie }) {
 
 export async function getStaticProps() {
 
-  const response = await fetch('https://makeup-api.herokuapp.com/api/v1/products.json?product_type=bronzer')
+  const response = await fetch('https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55')
   const data = await response.json()
 
   return {
     props: {
-      movie: data,
+      movie: data.results,
     },
     revalidate: 10,
   }
 }
+
+/* https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55 */
+
+/*https://api.themoviedb.org/3/discover/tv?api_key=9fc5ec823b52d89bc85b0d989845ac55&with_network=213&language=pt  */
