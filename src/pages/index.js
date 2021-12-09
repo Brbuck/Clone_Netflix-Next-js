@@ -1,6 +1,9 @@
 import Head from 'next/head'
 
-export default function Home() {
+import { FiChevronLeft } from "react-icons/fi";
+import { FiChevronRight } from "react-icons/fi";
+
+export default function Home({ movie }) {
   return (
     <div >
       <Head>
@@ -9,9 +12,40 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-     <div>
-       <div className="container-image"></div>
-     </div>
+      <div className='home_contente'>
+        <div className="container-image"></div>
+        <div className="wrapper">
+          <button className='left_button'><FiChevronLeft /></button>
+          <button className='right_button'><FiChevronRight /></button>
+          <div className="slide">
+
+            {
+              movie.map((item, index) => {
+                return (
+                  <div key={index} className="card">
+                    <img src={item.image_link} />
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+
+      </div>
     </div>
   )
+}
+
+
+export async function getStaticProps() {
+
+  const response = await fetch('https://makeup-api.herokuapp.com/api/v1/products.json?product_type=bronzer')
+  const data = await response.json()
+
+  return {
+    props: {
+      movie: data,
+    },
+    revalidate: 10,
+  }
 }
