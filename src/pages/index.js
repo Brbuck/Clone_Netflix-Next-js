@@ -1,12 +1,16 @@
 import Head from 'next/head'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+
 
 import { FiChevronLeft } from "react-icons/fi";
 import { FiChevronRight } from "react-icons/fi";
+import { BsFillPlayFill } from "react-icons/bs";
+import { CgMathPlus } from "react-icons/cg";
+import { BiLike } from "react-icons/bi";
+import { BiDislike } from "react-icons/bi";
 
 export default function Home({ movie }) {
   const [scrollX, setScrollX] = useState(0)
-
 
   function LeftArrow() {
     let x = scrollX + 500
@@ -20,7 +24,7 @@ export default function Home({ movie }) {
     let x = scrollX - 500
     let list = 19 * 220
     if ((window.innerWidth - list) > x) {
-      x = (window.innerWidth - list) - 230
+      x = (window.innerWidth - list) - 260
     }
     setScrollX(x)
     console.log(list)
@@ -37,7 +41,7 @@ export default function Home({ movie }) {
       <div className='home_contente'>
         <div className="container-image"></div>
         <div className="wrapper">
-          <button onClick={LeftArrow}  className='left_button'><FiChevronLeft /></button>
+          <button onClick={LeftArrow} className='left_button'><FiChevronLeft /></button>
           <button onClick={RightArrow} className='right_button'><FiChevronRight /></button>
           <div style={{ marginLeft: scrollX }} className="slide">
 
@@ -46,6 +50,19 @@ export default function Home({ movie }) {
                 return (
                   <div key={index} className="card">
                     <img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} />
+                    <div className='info'>
+                      <div className='controllers'>
+                        <span><BsFillPlayFill/></span>
+                        <span><CgMathPlus /></span>
+                        <span><BiLike /></span>
+                        <span><BiDislike /></span>
+                      </div>
+                      <div className="recomend">
+                          <span>{item.vote_average * 10}% Relevante</span>
+                          <span>L</span>
+                      </div>
+                      <span>{item.name}</span>
+                    </div>
                   </div>
                 )
               })
@@ -61,7 +78,7 @@ export default function Home({ movie }) {
 
 export async function getStaticProps() {
 
-  const response = await fetch('https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55')
+  const response = await fetch(`https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55`)
   const data = await response.json()
 
   return {
@@ -71,6 +88,7 @@ export async function getStaticProps() {
     revalidate: 10,
   }
 }
+
 
 /* https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55 */
 
