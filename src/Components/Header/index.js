@@ -26,7 +26,7 @@ function Header() {
     return (
         <header className={scroll ? 'header active' : 'header'} >
             <nav>
-                <div><Image src={NetflixImage} alt="Netflix Logo" width={90} height={30} /></div>
+                <div><Image src={NetflixImage} alt="Netflix Logo" width={93} height={25} /></div>
                 <Link href="/"><a>Início</a></Link>
                 <Link href="/"><a>Séries</a></Link>
                 <Link href="/"><a>Filmes</a></Link>

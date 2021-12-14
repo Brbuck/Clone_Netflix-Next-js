@@ -1,0 +1,147 @@
+.wrapper{
+    position: relative;
+    bottom: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: hidden;
+
+
+    h1{
+        margin-left: 50px;
+    }
+    
+
+    &:hover .left_button,
+    &:hover .right_button {
+        opacity: 1;
+    }
+
+    .image{
+        width: 212px;
+    }
+
+    button{
+        position: absolute;
+        cursor: pointer;
+        width: 30px;
+        height: 118px;
+        font-size: 1.8rem;
+        color: #fff;
+        background-color:rgba(0, 0, 0, 0.5);
+        z-index: 10;
+        opacity: 0;
+
+    }
+
+    .left_button{
+        left: 0;
+    }
+
+    .right_button{
+        right: 0;
+    }
+
+    .slide{
+        width: auto;
+        height: 160px;
+        padding: 0px 50px;
+
+        display: flex;
+        align-items: center;
+        overflow-x: hidden;
+
+        transition: all ease 0.5s;
+        
+       
+        .card{
+            margin: 0px 3px;
+            transition: all ease-in 0.3s;
+            display: flex;
+            flex-direction: column;
+
+
+            img{
+                height: 118px;
+                width: 210px;
+            }
+            .info{
+                width: 212px;
+                height: 130px;
+                padding: 8px;
+                background-color: #333;
+                display: none;
+
+                .controllers{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    span{
+                        font-size: 20px;
+                        padding: 5px;
+                        margin-left: 3px;
+                        cursor: pointer;
+                        border: 1px solid #fff;
+                        border-radius: 50%;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        
+
+                        &:nth-child(1){
+                            background-color: #fff;
+                            color: #222;
+                        }
+
+                    }
+                    
+                }
+
+                .recomend{
+                    margin: 10px 0px;
+
+                    span{
+                        font-size: 0.8rem;
+                        color: green;
+                        margin-left: 5px;
+
+                        &:nth-child(2){
+                            background-color: green;
+                            padding: 5px 8px;
+                            color: #222;
+                        }
+                    }
+                }
+            }
+           
+            &:hover{
+                transform: scale(1.5);
+              
+            }
+            
+            &:hover .info{
+                display: block;
+            }
+
+        }
+    }
+
+}
+
+/* .slide:focus-within .card,
+.slide:hover .card {
+  transform: translateX(-25%);
+}
+
+.card:focus ~ .card,
+.card:hover ~ .card {
+  transform: translateX(25%);
+}
+
+.slide .card:focus,
+.slide .card:hover {
+  transform: scale(1.5);
+  z-index: 1;
+}
+ */

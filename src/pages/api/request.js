@@ -47,3 +47,48 @@ export default {
     }
 } 
 
+/* {
+         movie.map((item,index) =>{
+           return(
+            <div className="wrapper" key={index}>
+            <button onClick={LeftArrow}  className='left_button'><FiChevronLeft /></button>
+            <button onClick={RightArrow} className='right_button'><FiChevronRight /></button>
+            <div style={{ marginLeft: scrollX }} className="slide">
+            {
+              item.results > 0 && item.results.movie.map((itens, index) => {
+                return (
+                  <div key={index} className="card">
+                    <img src={`https://image.tmdb.org/t/p/original/${itens.backdrop_path}`} />
+                    <p>{itens.name}</p>
+                  </div>
+                )
+              })
+            }
+              
+            </div>
+          </div>
+           )
+         })
+       }
+
+      </div>
+    </div>
+  )
+}
+
+
+export async function getStaticProps() {
+
+ /*  const response = await fetch(`https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55`)
+  const data = await response.json() */
+
+/*  let list = await request.getHomeList()
+ console.log(list)
+
+  return {
+    props: {
+      movie: list,
+    },
+    revalidate: 10,
+  }
+} */ 

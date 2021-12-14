@@ -1,34 +1,25 @@
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Request from './api/request'
+import RowMovies from '../Components/RowMovies'
 
 
-import { FiChevronLeft } from "react-icons/fi";
-import { FiChevronRight } from "react-icons/fi";
-import { BsFillPlayFill } from "react-icons/bs";
-import { CgMathPlus } from "react-icons/cg";
-import { BiLike } from "react-icons/bi";
-import { BiDislike } from "react-icons/bi";
+import { IoIosInformationCircleOutline } from "react-icons/io";
 
-export default function Home({ movie }) {
-  const [scrollX, setScrollX] = useState(0)
+export default function Home() {
 
-  function LeftArrow() {
-    let x = scrollX + 500
-    if (x > 0) {
-      x = 0
+  const [movies, setMovies] = useState([])
+
+  useEffect(() => {
+    const req = async () => {
+      let list = await Request.getHomeList()
+      setMovies(list)
+      console.log(list)
     }
-    setScrollX(x)
-  }
 
-  function RightArrow() {
-    let x = scrollX - 500
-    let list = 19 * 220
-    if ((window.innerWidth - list) > x) {
-      x = (window.innerWidth - list) - 260
-    }
-    setScrollX(x)
-    console.log(list)
-  }
+    req();
+  }, [])
+
 
   return (
     <div >
@@ -39,44 +30,24 @@ export default function Home({ movie }) {
       </Head>
 
       <div className='home_contente'>
-        <div className="container-image"></div>
-        <div className="wrapper">
-          <button onClick={LeftArrow} className='left_button'><FiChevronLeft /></button>
-          <button onClick={RightArrow} className='right_button'><FiChevronRight /></button>
-          <div style={{ marginLeft: scrollX }} className="slide">
-
-            {
-              movie.map((item, index) => {
-                return (
-                  <div key={index} className="card">
-                    <img src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} />
-                    <div className='info'>
-                      <div className='controllers'>
-                        <span><BsFillPlayFill/></span>
-                        <span><CgMathPlus /></span>
-                        <span><BiLike /></span>
-                        <span><BiDislike /></span>
-                      </div>
-                      <div className="recomend">
-                          <span>{item.vote_average * 10}% Relevante</span>
-                          <span>L</span>
-                      </div>
-                      <span>{item.name}</span>
-                    </div>
-                  </div>
-                )
-              })
-            }
-          </div>
+        <div className="container-image">
+          <button className='watch-button'><span>&#9658;</span> Assistir </button>
+          <button className='info-button'><span><IoIosInformationCircleOutline /></span>Mais informações</button>
         </div>
-
+        {
+          movies.map((item, index) => (
+            <div>
+              <RowMovies items={item.item} title={item.title} key={index} />
+            </div>
+          ))
+        }
       </div>
     </div>
   )
 }
 
 
-export async function getStaticProps() {
+/* export async function getStaticProps() {
 
   const response = await fetch(`https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55`)
   const data = await response.json()
@@ -88,8 +59,25 @@ export async function getStaticProps() {
     revalidate: 10,
   }
 }
-
+ */
 
 /* https://api.themoviedb.org/3/discover/tv?with_network=8&language=pt-BR&api_key=9fc5ec823b52d89bc85b0d989845ac55 */
 
 /*https://api.themoviedb.org/3/discover/tv?api_key=9fc5ec823b52d89bc85b0d989845ac55&with_network=213&language=pt  */
+
+
+/*
+
+const [movies, setMovies] = useState([])
+
+useEffect(()=>{
+  const req = async () =>{
+    let list = await request.getHomeList()
+    setMovies(list)
+  }
+
+  req();
+},[])
+
+
+*/
