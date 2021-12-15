@@ -30,9 +30,13 @@ export default function Home() {
       </Head>
 
       <div className='home_contente'>
+
         <div className="container-image">
+          <h1 className='title'>Duna</h1>
+          <div>
           <button className='watch-button'><span>&#9658;</span> Assistir </button>
           <button className='info-button'><span><IoIosInformationCircleOutline /></span>Mais informações</button>
+          </div>
         </div>
         {
           movies.map((item, index) => (
