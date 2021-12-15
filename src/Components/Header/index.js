@@ -7,7 +7,7 @@ import Avatar from '../../assets/avatar.jpg'
 
 import { BsBellFill } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
-import { BsPersonFill } from "react-icons/bs";
+//import { BsPersonFill } from "react-icons/bs";
 
 function Header() {
     const [scroll, setScroll] = useState(false);
@@ -27,16 +27,16 @@ function Header() {
 
     const [click, setClick] = useState(false)
 
-    function togleMenu(){
+    function togleMenu() {
         setClick(!click)
     }
 
     return (
         <header className={scroll ? 'header active' : 'header'} >
             <div className='nav_menu'>
-                <div><Image className='image' src={NetflixImage} alt="Netflix Logo"  width={93} height={25} /></div>
-               <span onClick={togleMenu} onMouseOver={togleMenu} >Navegar &#9660;</span>
-                <nav onMouseLeave={togleMenu} className={ click ? 'menu active' : 'menu'} >
+                <div><Image className='image' src={NetflixImage} alt="Netflix Logo" width={93} height={25} /></div>
+                <span onClick={togleMenu} onMouseOver={togleMenu} >Navegar &#9660;</span>
+                <nav onMouseLeave={togleMenu} className={click ? 'menu active' : 'menu'} >
                     <Link href="/"><a>Início</a></Link>
                     <Link href="/"><a>Séries</a></Link>
                     <Link href="/"><a>Filmes</a></Link>

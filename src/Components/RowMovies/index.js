@@ -21,7 +21,7 @@ function RowMovies({ items, title }) {
     let x = scrollX - 500
     let list = items.results.length * 220
     if ((window.innerWidth - list) > x) {
-      x = (window.innerWidth - list) 
+      x = (window.innerWidth - list) - 40
     }
     setScrollX(x)
     console.log(list)
@@ -66,7 +66,7 @@ export default RowMovies;
 
 
 
-/* 
+/*
 
 
  <div className="wrapper">
