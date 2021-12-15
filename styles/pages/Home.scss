@@ -4,6 +4,17 @@
         color: #fff;
         font-size: 5rem;
         margin: 20px;
+
+        @media (max-width: 850px){
+            font-size: 3.5rem;
+             
+         }
+
+         @media (max-width: 500px){
+            font-size: 2.5rem;
+             
+         }
+
     }
   
     .container-image{
@@ -20,50 +31,74 @@
 
         padding: 40px;
 
-      div{
-        display: flex;
+        @media (max-width: 850px){
+            height: 600px;       
+         }
 
-        button{
-            height: 45px;
-            padding: 5px 10px;
-            font-size: 1.2rem;
-            margin-left: 20px;
+         @media (max-width: 500px){
+            padding: 20px;
+             
+         }
+
+        div{
             display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 5px;
-        }
 
-        .watch-button{
-            width: 135px;
-            background-color: #ffff;
-            
-            span{
-                margin-right: 5px;
-                font-size: 25px;
+            button{
+                height: 45px;
+                padding: 5px 10px;
+                font-size: 1.2rem;
+                margin-left: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border-radius: 5px;
+
+                @media (max-width: 500px){
+                    font-size: 1rem;
+                    
+                }
             }
-        }
 
-        .info-button{
-            width: 220px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
+            .watch-button{
+                width: 135px;
+                background-color: #ffff;
+                
+                span{
+                    margin-right: 5px;
+                    font-size: 25px;
 
-            span{
-                font-size: 25px;
-                margin-right: 2px;
-                margin-top: 3px;
+                    @media (max-width: 500px){
+                        font-size: 20px; 
+                    }
+                }
+
+                @media (max-width: 500px){
+                    width: 100px;
+                    
+                }
             }
-            
+
+            .info-button{
+                width: 220px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: #fff;
+
+                span{
+                    font-size: 25px;
+                    margin-right: 2px;
+                    margin-top: 3px;
+                }
+
+                @media (max-width: 500px){
+                    width: 180px; 
+                 }
+                
+            }
+        
         }
-    
+
     }
-
-      }
-
-      
-
 
 }
 

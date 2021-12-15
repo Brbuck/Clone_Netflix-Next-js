@@ -34,8 +34,8 @@ export default function Home() {
         <div className="container-image">
           <h1 className='title'>Duna</h1>
           <div>
-          <button className='watch-button'><span>&#9658;</span> Assistir </button>
-          <button className='info-button'><span><IoIosInformationCircleOutline /></span>Mais informações</button>
+            <button className='watch-button'><span>&#9658;</span> Assistir </button>
+            <button className='info-button'><span><IoIosInformationCircleOutline /></span>Mais informações</button>
           </div>
         </div>
         {
