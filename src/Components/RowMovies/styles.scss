@@ -124,170 +124,162 @@
 } 
    */
 
-
-  /* .slide:focus-within .card,
-.slide:hover .card {
-  transform: translateX(-25%);
-}
-
-.card:focus ~ .card,
-.card:hover ~ .card {
-  transform: translateX(25%);
-}
-
-.slide .card:focus,
-.slide .card:hover {
-  transform: scale(1.5);
-  z-index: 1;
-}*/
- 
-
-
- .wrapper{
+.wrapper {
     position: relative;
     bottom: 220px;
     display: flex;
     flex-direction: column;
     padding: 0px 0px 0px 50px;
-    
-    @media (max-width: 500px){
-        padding: 0px 0px 0px 20px;
-         
-     }
 
-    h1{
-        font-size: 2rem;
-        
-        @media (max-width: 850px){
-            font-size: 1.5rem;
-             
-         }
+    @media (max-width: 500px) {
+        padding: 0px 0px 0px 20px;
     }
 
-    .teste{
+    h1 {
+        font-size: 2rem;
+        margin-top: 40px;
+
+        @media (max-width: 850px) {
+            font-size: 1.5rem;
+        }
+    }
+
+    .carrosel {
         position: relative;
         height: 100%;
-        
 
         &:hover .left_button,
         &:hover .right_button {
             opacity: 1;
         }
-    
-        .image{
+
+        .image {
             width: 212px;
         }
 
         .left_button,
-        .right_button{
+        .right_button {
             position: absolute;
             cursor: pointer;
-            width: 30px;
-            height: 175px;
+            width: 40px;
+            height: 100%;
             font-size: 1.8rem;
             color: #fff;
-            //background-color:rgba(0, 0, 0, 0.5);
-            z-index: 10;
+            background-color:rgba(0, 0, 0, 0.5);
+            z-index: 11;
             opacity: 0;
-    
-            &:nth-child(1){
+
+            &:nth-child(1) {
                 left: 0;
             }
-            &:nth-child(2){
-            right: 0;
+            &:nth-child(2) {
+                right: 0;
             }
 
-            @media (max-width: 500px){
-                opacity: 1;        
+            @media (max-width: 500px) {
+                opacity: 1;
             }
         }
-    
-        .slide{
+
+        .slide {
             width: auto;
-            height: 170px;
+            height: 120px;
 
             display: flex;
             align-items: center;
             overflow: hidden;
             transition: all ease 0.5s;
-        
-        .card{
-           
-            margin: 0px 3px;
-            transition: all ease-in 0.3s;
-            display: flex;
-            flex-direction: column;
-           
 
-            img{
-               
-                height: 118px;
-                height: 100%;
-                width: 210px;
-            }
-            .info{
-                width: 210px;
-                height: 130px;
-                padding: 8px;
-                background-color: #333;
-                display: none;
+            .card {
+                margin: 0px 3px;
 
-                .controllers{
-                    display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
-                    
-                    span{
-                        font-size: 20px;
-                        padding: 5px;
-                        margin-left: 3px;
-                        cursor: pointer;
-                        border: 1px solid #fff;
-                        border-radius: 50%;
+                div {
+                    transition: ease 0.8s;
+                    background-color: #333;
 
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                    img {
+                        height: 118px;
+                        height: 100%;
+                        width: 210px;
+                    }
+
+                    .info {
+                        width: 210px;
+                        height: 130px;
+                        padding: 8px;
+                        background-color: #333;
+                        display: none;
+
+                        .controllers {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+
+                            &:hover {
+                                transform: scale(1);
+                                position:static;
+                            }
+
+                            span {
+                                font-size: 20px;
+                                padding: 5px;
+                                margin-left: 3px;
+                                cursor: pointer;
+                                border: 1px solid #fff;
+                                border-radius: 50%;
+
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                &:nth-child(1) {
+                                    background-color: #fff;
+                                    color: #222;
+                                }
+
+                            }
+                        }
+
+                        .recomend {
+                            margin: 10px 0px;
+
+                            span {
+                                font-size: 0.8rem;
+                                color: green;
+                                margin-left: 5px;
+
+                                &:nth-child(2) {
+                                    background-color: green;
+                                    padding: 5px 8px;
+                                    color: #222;
+                                }
+                            }
+                            
+                            &:hover {
+                                transform: scale(1);
+                                position:static;
+                            }
+                        }
+
+                        &:hover {
+                            transform: scale(1);
+                            
+                        }
+                    }
+                    &:hover {
+                        transform: perspective(500px) translate3d(60px, -80px, 190px);
+                        //transform: scale(1.5);
+                        position: absolute;
+                        z-index: 10;
+                    }
+
+                    &:hover .info {
+                        display: block;
+                        position:static;
                         
-
-                        &:nth-child(1){
-                            background-color: #fff;
-                            color: #222;
-                        }
-
-                    }
-                    
-                }
-
-                .recomend{
-                    margin: 10px 0px;
-
-                    span{
-                        font-size: 0.8rem;
-                        color: green;
-                        margin-left: 5px;
-
-                        &:nth-child(2){
-                            background-color: green;
-                            padding: 5px 8px;
-                            color: #222;
-                        }
                     }
                 }
-            }
-            
-            &:hover{
-                //transform: scale3d(1.5, 1.0, 1.3);
-                //transform: perspective(300px) translate3d(10px, -50px, 120px);  
-                transform: scale(1.3)
-                
-            }
-            
-            &:hover .info{
-                display: block;
-                }
-
             }
         }
     }
-}  
+}

@@ -42,7 +42,6 @@ export default {
                 item: await baseUrl(`/discover/tv?with_genres=35&api_key=${API_KEY}&language=pt-BR&`)
             },
             
-
         ]
     }
 } 

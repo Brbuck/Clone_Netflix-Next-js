@@ -21,7 +21,7 @@ function RowMovies({ items, title }) {
     let x = scrollX - 500
     let list = items.results.length * 220
     if ((window.innerWidth - list) > x) {
-      x = (window.innerWidth - list) 
+      x = (window.innerWidth - list)
     }
     setScrollX(x)
     console.log(list)
@@ -30,7 +30,7 @@ function RowMovies({ items, title }) {
 
     <div className="wrapper" >
       <h1>{title}</h1>
-      <div className="teste" >
+      <div className="carrosel" >
         <button onClick={LeftArrow} className='left_button'><FiChevronLeft /></button>
         <button onClick={RightArrow} className='right_button'><FiChevronRight /></button>
         <div style={{ marginLeft: scrollX }} className="slide">
@@ -39,19 +39,21 @@ function RowMovies({ items, title }) {
               return (
 
                 <div key={index} className="card">
-                  <img className="image" src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} />
-                  <div className='info'>
-                    <div className='controllers'>
-                      <span><BsFillPlayFill /></span>
-                      <span><CgMathPlus /></span>
-                      <span><BiLike /></span>
-                      <span><BiDislike /></span>
+                  <div>
+                    <img className="image" src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`} />
+                    <div className='info'>
+                      <div className='controllers'>
+                        <span><BsFillPlayFill /></span>
+                        <span><CgMathPlus /></span>
+                        <span><BiLike /></span>
+                        <span><BiDislike /></span>
+                      </div>
+                      <div className="recomend">
+                        <span>{item.vote_average * 10}% Relevante</span>
+                        <span>L</span>
+                      </div>
+                      <span>{item.name}</span>
                     </div>
-                    <div className="recomend">
-                      <span>{item.vote_average * 10}% Relevante</span>
-                      <span>L</span>
-                    </div>
-                    <span>{item.name}</span>
                   </div>
                 </div>
               )
